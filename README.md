@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Final Project - Mystra Grimoirium
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mystra Grimoirium is an app that will allow users to keep track of their own grimoire for Dungeons & Dragons' spells. Users would be able to add pre-made grimoires to their list of grimoires to use as reference for spells, as well as create their own with a list of available spells. It is an app that will help keep track of spells a D&D player needs and give detailed description of what that spell does with a fun flair.
 
-## Available Scripts
+This is the frontend of Mystra Grimoirium. If you would like to see the backend, please click [here](https://github.com/HowieKw/mystra-grimoirium-backend)
 
-In the project directory, you can run:
+## User Stories
 
-### `npm start`
+* Users will be able to create an account and login to use the app.
+* Users will be able to navigate into:
+    * a list of grimoires they have added to their shelf.
+    * a list of current available grimoires that they can then add to their shelf.
+    * a grimoire creation page to create a grimoire and add spells to their grimoire.
+    * the master spellbook to go directly to all listed spells to do research.
+* Users will also be able to click into a grimoire that each have their own combination of current spells.
+    * Users will then be able to click spells inside the grimoires to go in a full, page detail of the spell.
+* Users are able to edit grimoires they created to update spells.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Models and Relationships
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![My Data Relationships](/home/yongyi/final-project/mystra-grimoirium-frontend/public/Initial-model-map.png)
 
-### `npm test`
+### User 
+A `User` has many `User Grimoires`, has many `Grimoires` through `User Grimoires`
+* username
+* password_digest
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Grimoire
+`User Grimoires` belongs to `User`
+`User Grimoires` belongs to `Grimoires`
 
-### `npm run build`
+### Grimoire
+A `Grimoire` has many `User Grimoires`, has many `Users` through `User Grimoires`
+`Grimoire` has many spells
+* title
+* image
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Spell
+`Spell` belongs to `Grimoire`
+`Spell` belongs to `School`
+`Spell` belongs to `Level`
+`Spell` has many `Tags`
+`Spell` has many `Classes`
+* name
+* component
+* casting time
+* duration
+* range/area
+* attack/save
+* description
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### School
+`School` has many `Spells`
+* name
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Level
+`Level` has many `Spells`
+* name
 
-### `npm run eject`
+### Class
+`Class` has many `Spells`  
+* name
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Tag
+`Tag` has many `Spells`
+* name
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Wirefream/Mockup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+View [here](https://www.figma.com/file/DyQl9tvtAueTZxkaUhr63o/D-and-D-Grimoire?node-id=0%3A1)
