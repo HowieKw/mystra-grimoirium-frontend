@@ -1,5 +1,8 @@
 import './App.css';
 import { useState, useEffect } from "react";
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './menustyling';
+import { theme } from './theme';
 import MystraGrimoirium from './components/MystraGrimoirium';
 import UnauthenticatedApp from './UnauthenticatedApp';
 
@@ -27,19 +30,24 @@ function App() {
   if(!authChecked) { return <div></div>}
 
   return (
-    <div className="App">
-      {currentUser ? (
-        <MystraGrimoirium
-        setCurrentUser={setCurrentUser}
-        currentUser={currentUser}
-        />
-      ) : (
-        <UnauthenticatedApp
-          setCurrentUser={setCurrentUser}
-        />
-      )
-    }
-    </div>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyles />
+          <div className="App">
+            {currentUser ? (
+              <MystraGrimoirium
+              setCurrentUser={setCurrentUser}
+              currentUser={currentUser}
+              />
+            ) : (
+              <UnauthenticatedApp
+                setCurrentUser={setCurrentUser}
+              />
+            )
+          }
+          </div>
+      </>
+    </ThemeProvider>
   );
 }
 

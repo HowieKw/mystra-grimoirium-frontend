@@ -1,32 +1,34 @@
-import React, { useState, useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react'
+import { Route, Switch } from 'react-router-dom';
+import { Burger, Menu } from './MenuToggle';
+import { useOnClickOutside } from '../hooks'
 import Home from './Home';
-import NavBar from './NavBar';
+import Grimoires from './grimoires/Grimoires';
+import MasterGrimoire from './grimoires/MasterGrimoire';
+import GrimoireDetails from './grimoires/GrimoireDetails';
+
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
-    
-    const history = useHistory()
+    const [open, setOpen] = useState(false);
 
-    const handleLogout = () => {
-        fetch(`/logout`, {
-        method: 'DELETE',
-        credentials: 'include'
-        })
-        .then(res => {
-            if (res.ok) {
-            setCurrentUser(null)
-            history.push('/')
-            }
-        })
-    }
+
+    const node = useRef(); 
+    useOnClickOutside(node, () => setOpen(false));
 
     return(
         <div>
-            <header className="header">
-                <NavBar currentUser={currentUser} handleLogout={handleLogout}/>
-            </header>
+            <div ref={node}>
+                <header className="header">
+                    <Burger open={open} setOpen={setOpen}/>
+                    <Menu open={open} setOpen={setOpen} setCurrentUser={setCurrentUser}/>
+                </header>
+            </div>
+
             <nav>
                 <Switch>
+                    <Route path="/grimoire_details" component={() => <GrimoireDetails />} />
+                    <Route path="/grimoires/master_grimoire" component={() => <MasterGrimoire />} />
+                    <Route path="/grimoires" component={() => <Grimoires />} />
                     <Route path="/" component={() => <Home />} />
                 </Switch>
             </nav>
