@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import GrimoireRender from './GrimoireRender';
+import GrimoireSpells from './GrimoireSpells';
+import ReactPaginate from 'react-paginate';
 
 const MasterGrimoire = () => {
-    const [ spells, setSpells ] = useState([])
+    const [ spells, setSpells ] = useState([]);
+    const [ currentPage, setCurrentPage ] = useState(1);
+    const [ spellsPerPage, setSpellsPerPage ] = useState(5);
+
     
     useEffect(() => {
         fetch("/spells")
@@ -10,9 +14,9 @@ const MasterGrimoire = () => {
         .then(spellsData => setSpells(spellsData))
     }, []);
 
-    const displayMasterGrimoire = 
+    const displayMasterGrimoireSpells = 
     spells.map(spell =>
-        <MasterGrimoire 
+        <GrimoireSpells
         key={spell.id}
         spell={spell}
         />
@@ -21,11 +25,15 @@ const MasterGrimoire = () => {
     // console.log(spells)
 
     return(
-        <div className="grimoire-cards">
-            <div className="grimoire-info">
+        <section>
+            <section>
+                <h1 className="title">Mystra's Master Grimoire</h1>
+            </section>
 
-            </div>
-        </div>
+            <section>
+                {displayMasterGrimoireSpells}
+            </section>
+        </section>
     )
 }
 

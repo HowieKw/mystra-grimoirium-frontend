@@ -3,12 +3,21 @@ code {
     monospace;
 }
 
-body {
-  background: url("https://res.cloudinary.com/djzhu5kfj/image/upload/v1634251848/Flatiron%20-%20Final%20Project/fantasy-room-magical-library-castle-sunlight-fantasy-8949_onvayr.jpg") no-repeat center center fixed;
+/* body {
+  background: url("https://res.cloudinary.com/djzhu5kfj/video/upload/v1634615538/Flatiron%20-%20Final%20Project/Background_g6wkqp.mp4") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+} */
+
+#videoBackground {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }
 
 /* GRIMOIRES */
@@ -36,9 +45,9 @@ body {
   box-shadow: 0px 0px 15px 0px;
 }
 
+
 /* MASTER GRIMOIRE */
 #master-grimoire {
-  background: url("https://res.cloudinary.com/djzhu5kfj/image/upload/v1634251865/Flatiron%20-%20Final%20Project/Mystra_Grimoire_plnagw.jpg");
   width: 50%;
   border-radius: 25px;
   transition: 0.3s;
@@ -61,4 +70,23 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   color: rgb(218, 196, 0)
+}
+
+
+/* OPEN GRIMOIRE/GRIMOIRE DETAILS */
+
+.openGrimoire {
+  
+}
+
+.openBook {
+  /* background: url("https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png") no-repeat center center fixed;
+  padding: 50%;
+  z-index: -1;
+  display: flex;
+  flex-direction: row; */
+}
+
+#table_of_contents {
+  /* position: relative; */
 }

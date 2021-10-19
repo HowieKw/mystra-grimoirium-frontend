@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import GrimoireSpells from "./GrimoireSpells"
 
-const GrimoireDetails = () => {
-    const [grimDetails, setGrimDetails] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    
-    const id = useParams().id;
+const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
+    const { title } = grimDetails
 
-    useEffect(() => {
-        fetch(`/grimoires/${id}`)
-        .then(resp => resp.json())
-        .then(grimoireData => {
-            setGrimDetails(grimoireData);
-            // setComment(superheroes.comments);
-            setIsLoaded(true);
-        });
-    }, [id]);
+    // console.log(grimoireSpells)
 
-    // console.log(details)
-
-    if (!isLoaded) return <h2>Revealing Spells...</h2>;
+    const displaySpells =
+    grimoireSpells.map(spell => 
+    <GrimoireSpells 
+    id={spell.id}
+    spell={spell}
+    />    
+    )
 
     return (
         <section>
+            <div className="openBook">
+    
+                <section id="table_of_contents">
+                    <h1>{title}</h1>
+                </section>
 
+                <section id="rendered_spells">
+                    {displaySpells}
+                </section>
+            </div>
         </section>
     )
 }
