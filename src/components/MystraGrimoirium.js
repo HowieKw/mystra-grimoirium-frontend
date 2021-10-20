@@ -7,7 +7,8 @@ import GrimoireList from './grimoires/GrimoireList';
 import MasterGrimoire from './grimoires/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
 import CreateGrimoire from './grimoires/CreateGrimoire';
-import AddSpells from './spells/AddSpells';
+// import AddSpells from './spells/AddSpells';
+import SpellsGrim from './spells/SpellsGrim';
 
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
@@ -89,7 +90,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/grimoires/:id/add_spells" component={() => <AddSpells spells={spells} addSpell={addSpell} removeSpell={removeSpell}/>} /> 
+                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell}/>} /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 

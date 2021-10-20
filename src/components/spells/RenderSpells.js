@@ -6,7 +6,7 @@ const RenderSpells = ({ spells, id, grimId, setGrimId, grimSpells, addSpell, rem
 
     // console.log(spells)
     
-    grimSpells.map(grimSpell => setGrimId(grimSpell.id))
+    // grimSpells.map(grimSpell => setGrimId(grimSpell.id))
 
     const removeOrAddButton = (grimId) => {
         if (grimoire_spells.find(grimSpell => grimSpell.id === grimId)) {
