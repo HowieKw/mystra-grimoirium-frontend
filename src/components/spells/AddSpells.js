@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import RenderSpells from "./RenderSpells";
 import ReactPaginate from 'react-paginate';
 
-const GrimoireSpells = ({ spells }) => {
+const AddSpells = ({ spells, isLoaded, addSpell }) => {
     const [ pageNumber, setPageNumber ] = useState(0);
-    // console.log(spell)
+    const [ grimId, setGrimId ] = useState([])
+
+    const id = useParams().id;
+    let path = `/grimoires/${id}`
+
+    if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
     const spellsPerPage = 5
     const pagesVisited = pageNumber * spellsPerPage
@@ -15,17 +21,23 @@ const GrimoireSpells = ({ spells }) => {
         setPageNumber(selected);
     }
 
-    return(
+    const displaySpells =
+    spellsDisplayed.map(spells =>
+        <RenderSpells 
+        key={spells.id}
+        spells={spells}
+        addSpell={addSpell}
+        pageCount={pageCount}
+        changePage={changePage}
+        grimId={grimId}
+        setGrimId={setGrimId}
+        id={id}
+        />
+    )
+
+    return (
         <div>
-            {spellsDisplayed.map(spell => (
-               <div key={spell.id} className="spellCards"> 
-                    <h3>{spell.name}</h3>
-                    <h4>{spell.level}</h4>
-                    <h4>{spell.school}</h4>
-                    <h4>{spell.components}</h4>
-                    <h4>Ritual: {spell.ritual} / Concentration: {spell.concentration}</h4>
-                </div>
-            ))}
+            {displaySpells}
             <ReactPaginate 
                 previousLabel={"Previous"}
                 nextLabel={"Next"}
@@ -37,8 +49,12 @@ const GrimoireSpells = ({ spells }) => {
                 disabledClassName={"paginationDisabled"}
                 activeClassName={"paginationActive"}
                 />
+            <Link to={path}>
+                <button>Return to Grimoire</button>
+            </Link>
         </div>
     )
 }
 
-export default GrimoireSpells;
+
+export default AddSpells;

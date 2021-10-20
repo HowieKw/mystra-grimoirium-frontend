@@ -6,13 +6,15 @@ import Home from './Home';
 import GrimoireList from './grimoires/GrimoireList';
 import MasterGrimoire from './grimoires/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
-import CreateGrimoire from './CreateGrimoire';
+import CreateGrimoire from './grimoires/CreateGrimoire';
+import AddSpells from './spells/AddSpells';
 
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     const [open, setOpen] = useState(false);
     const [ grimoires, setGrimoires ] = useState([]);
     const [ spells, setSpells ] = useState([]);
+    const [ grimSpells, setGrimSpells ] = useState([])
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const node = useRef(); 
@@ -25,16 +27,55 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     }, []);
 
     useEffect(() => {
-        let mounted = true;
         fetch("/spells")
         .then(resp => resp.json())
         .then(spellsData => {
-            if(mounted) {
                 setSpells(spellsData);
                 setIsLoaded(true);
-            }
         })
     }, []);
+
+    const addSpell = (spellId, grimoireId, e) => {
+        // console.log(spellId)
+        // console.log(grimoireId)
+        e.preventDefault();
+        return fetch('/grimoire_spells', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                grimoire_id: grimoireId,
+                spell_id: spellId
+            })
+          })
+            .then(res => {
+              if (res.ok) {
+                return res.json()
+              } else {
+                return res.json().then(errors => Promise.reject(errors))
+              }
+            })
+            .then(addedSpell => {
+              setGrimSpells(grimSpells.concat(addedSpell))
+            })
+        }
+
+        // const removeSpell = (favId) => {
+        //     e.preventDefault();
+        //     return fetch(`/grimoire_spells/${favId}`, {
+        //         method: "DELETE",
+        //         credentials: 'include'
+        //     })
+        //         .then(res => {
+        //         if (res.ok) {
+        //             const updatedFavHeroes = favHeroes.filter(hero => hero.id !== favId)
+        //             setFavHeroes(updatedFavHeroes)
+        //         }
+        //         })
+        //     }
+
 
     return(
         <div>
@@ -52,7 +93,9 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/create_grimoire" component={() => <CreateGrimoire />} /> 
+                    <Route path="/grimoires/:id/add_spells" component={() => <AddSpells spells={spells} isLoaded={isLoaded} addSpell={addSpell}/>} /> 
+
+                    <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 
                     <Route path="/grimoires/master_grimoire" component={() => <MasterGrimoire spells={spells} isLoaded={isLoaded} />} />
 

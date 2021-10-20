@@ -1,17 +1,12 @@
 import GrimoireSpells from "./GrimoireSpells"
+import { Link } from "react-router-dom";
 
 const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
-    const { title } = grimDetails
+    const { title, id } = grimDetails
 
-    // console.log(grimoireSpells)
+    // console.log(id)
 
-    // const displaySpells =
-    // grimoireSpells.map(spell => 
-    // <GrimoireSpells 
-    // id={spell.id}
-    // spell={spell}
-    // />    
-    // )
+    let path = `/grimoires/${id}/add_spells`
 
     return (
         <section>
@@ -23,6 +18,9 @@ const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
 
                 <section id="rendered_spells">
                     <GrimoireSpells spells={grimoireSpells}/>
+                    <Link to={path}>
+                        <button>Add Spells</button>
+                    </Link>
                 </section>
             </div>
         </section>

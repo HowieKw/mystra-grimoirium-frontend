@@ -9,12 +9,16 @@ const OpenGrimoire = () => {
     const id = useParams().id;
 
     useEffect(() => {
+        let mounted = true;
         fetch(`/grimoires/${id}`)
         .then(resp => resp.json())
         .then(grimoireData => {
-            setGrimDetails(grimoireData);
-            setIsLoaded(true);
+            if(mounted) {
+                setGrimDetails(grimoireData);
+                setIsLoaded(true);
+            }
         });
+        return () => mounted = false;
     }, [id]);
 
     // console.log()
