@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
 
-const GrimoireSpells = ({ spell }) => {
-    const { name, level, school, components, ritual, concentration } = spell
+const GrimoireSpells = ({ spells }) => {
 
     // console.log(spell)
 
+
     return(
         <div>
-            <h3>{name}</h3>
-            <h4>{level}</h4>
-            <h4>{school}</h4>
-            <h4>{components}</h4>
-            <h4>Ritual: {ritual} / Concentration: {concentration}</h4>
+            {spells.map(spell => (
+               <div key={spell.id}> 
+                    <h3>{spell.name}</h3>
+                    <h4>{spell.level}</h4>
+                    <h4>{spell.school}</h4>
+                    <h4>{spell.components}</h4>
+                    <h4>Ritual: {spell.ritual} / Concentration: {spell.concentration}</h4>
+                </div>
+            ))}
         </div>
     )
 }

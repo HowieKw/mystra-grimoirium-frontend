@@ -2,27 +2,22 @@ import React, { useState, useEffect } from 'react'
 import GrimoireSpells from './GrimoireSpells';
 import ReactPaginate from 'react-paginate';
 
-const MasterGrimoire = () => {
-    const [ spells, setSpells ] = useState([]);
-    const [ currentPage, setCurrentPage ] = useState(1);
-    const [ spellsPerPage, setSpellsPerPage ] = useState(5);
-
+const MasterGrimoire = ({ spells, isLoaded }) => {
+    const [ pageNumber, setPageNumber ] = useState(0);
     
-    useEffect(() => {
-        fetch("/spells")
-        .then(resp => resp.json())
-        .then(spellsData => setSpells(spellsData))
-    }, []);
 
-    const displayMasterGrimoireSpells = 
-    spells.map(spell =>
-        <GrimoireSpells
-        key={spell.id}
-        spell={spell}
-        />
-        )
+    if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
-    // console.log(spells)
+    // console.log(currentSpells)
+
+    const spellsPerPage = 5
+    const pagesVisited = pageNumber * spellsPerPage
+    const spellsDisplayed = spells.slice(pagesVisited, pagesVisited + spellsPerPage);
+
+    const pageCount = Math.ceil(spells.length / spellsPerPage);
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    }
 
     return(
         <section>
@@ -31,7 +26,18 @@ const MasterGrimoire = () => {
             </section>
 
             <section>
-                {displayMasterGrimoireSpells}
+                <GrimoireSpells spells={spellsDisplayed}/>
+                <ReactPaginate 
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={"paginationBttns"}
+                previousLinkClassName={"previousBttn"}
+                nextLinkClassName={"nextBttn"}
+                disabledClassName={"paginationDisabled"}
+                activeClassName={"paginationActive"}
+                />
             </section>
         </section>
     )

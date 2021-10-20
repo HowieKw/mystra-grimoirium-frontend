@@ -24,9 +24,27 @@ const Menu = ({ open, setCurrentUser }) => {
     <StyledMenu open={open}>
       <nav>
 
-        <NavLink exact to="/">
-          Home
-        </NavLink>
+        <nav>
+          <NavLink exact to="/">
+            Home
+          </NavLink>
+        </nav>
+
+        <br></br>
+        
+        <nav>
+          <NavLink exact to="/grimoires">
+            Grimoires
+          </NavLink>
+        </nav>
+
+        <br></br>
+
+        <nav>
+          <NavLink exact to="/create_grimoire">
+            Create Grimoire
+          </NavLink>
+        </nav>
 
         <nav id="logout" onClick={handleLogout}>
           Logout

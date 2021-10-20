@@ -5,13 +5,13 @@ const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
 
     // console.log(grimoireSpells)
 
-    const displaySpells =
-    grimoireSpells.map(spell => 
-    <GrimoireSpells 
-    id={spell.id}
-    spell={spell}
-    />    
-    )
+    // const displaySpells =
+    // grimoireSpells.map(spell => 
+    // <GrimoireSpells 
+    // id={spell.id}
+    // spell={spell}
+    // />    
+    // )
 
     return (
         <section>
@@ -22,7 +22,7 @@ const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
                 </section>
 
                 <section id="rendered_spells">
-                    {displaySpells}
+                    <GrimoireSpells spells={grimoireSpells}/>
                 </section>
             </div>
         </section>

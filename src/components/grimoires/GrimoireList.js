@@ -21,7 +21,7 @@ const GrimoireList = ({ grimoires }) => {
             <div className="grimoire-cards">
                 <section className="container">
                     <Link to={path}>
-                        <img src="https://res.cloudinary.com/djzhu5kfj/image/upload/v1634251865/Flatiron%20-%20Final%20Project/Mystra_Grimoire_plnagw.jpg" id="master-grimoire" />
+                        <img src="https://res.cloudinary.com/djzhu5kfj/image/upload/v1634251865/Flatiron%20-%20Final%20Project/Mystra_Grimoire_plnagw.jpg" id="master-grimoire" alt="Master Grimoire"/>
                         <h1 className="centered">Mystra's Master Grimoire</h1>
                     </Link>
                 </section>

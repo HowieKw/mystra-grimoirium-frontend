@@ -11,7 +11,7 @@ const GrimoireRender = ({ grimoire }) => {
     return (
         <div className="container">
             <Link to={path}>
-                <img src={image} className="grimoire-cover"/>
+                <img src={image} className="grimoire-cover" alt={title}/>
                 <h1 className="centered">{title}</h1>
             </Link>
         </div>

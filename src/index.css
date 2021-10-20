@@ -76,7 +76,7 @@ code {
 /* OPEN GRIMOIRE/GRIMOIRE DETAILS */
 
 .openGrimoire {
-  
+
 }
 
 .openBook {
@@ -89,4 +89,33 @@ code {
 
 #table_of_contents {
   /* position: relative; */
+}
+
+/* PAGINATION */
+
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 230, 0);
+  color: rgb(255, 230, 0);
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: rgb(32, 114, 0);
+  background-color: rgb(255, 230, 0);
+}
+
+.paginationActive a {
+  color: rgb(32, 114, 0);
+  background-color: rgb(255, 230, 0);
 }
