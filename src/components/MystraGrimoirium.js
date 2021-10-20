@@ -14,7 +14,8 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     const [open, setOpen] = useState(false);
     const [ grimoires, setGrimoires ] = useState([]);
     const [ spells, setSpells ] = useState([]);
-    const [ grimSpells, setGrimSpells ] = useState([])
+    const [ grimSpells, setGrimSpells ] = useState([]);
+    const [ grimId, setGrimId ] = useState([])
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const node = useRef(); 
@@ -62,27 +63,22 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
         }
 
-        // const removeSpell = (favId) => {
-        //     e.preventDefault();
-        //     return fetch(`/grimoire_spells/${favId}`, {
-        //         method: "DELETE",
-        //         credentials: 'include'
-        //     })
-        //         .then(res => {
-        //         if (res.ok) {
-        //             const updatedFavHeroes = favHeroes.filter(hero => hero.id !== favId)
-        //             setFavHeroes(updatedFavHeroes)
-        //         }
-        //         })
-        //     }
+        const removeSpell = (grimSpellId) => {
+            return fetch(`/grimoire_spells/${grimSpellId}`, {
+                method: "DELETE",
+                credentials: 'include'
+            })
+                .then(res => {
+                if (res.ok) {
+                    const updatedGrimoreSpells = grimSpells.filter(grimSpell => grimSpell.id !== grimSpellId)
+                    setGrimSpells(updatedGrimoreSpells)
+                }
+                })
+            }
 
 
     return(
         <div>
-
-            <video autoPlay muted loop id="videoBackground">
-                <source src="https://res.cloudinary.com/djzhu5kfj/video/upload/v1634615538/Flatiron%20-%20Final%20Project/Background_g6wkqp.mp4" type="video/mp4" />
-            </video>
 
             <div ref={node}>
                 <header className="header">
@@ -93,7 +89,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/grimoires/:id/add_spells" component={() => <AddSpells spells={spells} isLoaded={isLoaded} addSpell={addSpell}/>} /> 
+                    <Route path="/grimoires/:id/add_spells" component={() => <AddSpells spells={spells} addSpell={addSpell} removeSpell={removeSpell}/>} /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 

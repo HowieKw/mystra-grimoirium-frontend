@@ -34,6 +34,11 @@ function App() {
       <>
         <GlobalStyles />
           <div className="App">
+            
+            <video autoPlay muted loop id="videoBackground">
+                <source src="https://res.cloudinary.com/djzhu5kfj/video/upload/v1634615538/Flatiron%20-%20Final%20Project/Background_g6wkqp.mp4" type="video/mp4" />
+            </video>
+
             {currentUser ? (
               <MystraGrimoirium
               setCurrentUser={setCurrentUser}

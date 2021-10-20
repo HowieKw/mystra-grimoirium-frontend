@@ -1,12 +1,20 @@
 import React, { useState } from 'react'
 
-const RenderSpells = ({ spells, id, grimId, setGrimId, addSpell }) => {
+const RenderSpells = ({ spells, id, grimId, setGrimId, grimSpells, addSpell, removeSpell }) => {
 
     const { name, level, school, components, ritual, concentration, grimoire_spells } = spells
 
-    // console.log(grimId)
+    // console.log(spells)
     
-    grimoire_spells.map(grimoire_spell => setGrimId(grimoire_spell.id))
+    grimSpells.map(grimSpell => setGrimId(grimSpell.id))
+
+    const removeOrAddButton = (grimId) => {
+        if (grimoire_spells.find(grimSpell => grimSpell.id === grimId)) {
+            return <button onClick={() => removeSpell(grimId)}>Remove Spell</button>
+        } else {
+            return  <button onClick={(e) => addSpell(spells.id, id, e)}>Add Spell</button>
+        }
+    }
 
     return(
         <div>
@@ -16,7 +24,7 @@ const RenderSpells = ({ spells, id, grimId, setGrimId, addSpell }) => {
                     <h4>School: {school}</h4>
                     <h4>Components: {components}</h4>
                     <h4>Ritual: {ritual} / Concentration: {concentration}</h4>
-                    <button onClick={(e) => addSpell(spells.id, id, e)}>Add Spell</button>
+                    {removeOrAddButton(grimId)}
                 </div>
         </div>
     )
