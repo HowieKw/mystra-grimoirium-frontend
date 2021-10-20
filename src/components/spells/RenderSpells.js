@@ -1,20 +1,23 @@
-import React, { useState } from 'react'
+import SpellButton from "./SpellButton";
 
-const RenderSpells = ({ spells, id, grimId, setGrimId, grimSpells, addSpell, removeSpell }) => {
+const RenderSpells = ({ spells, id, grimId, addSpell, removeSpell }) => {
 
     const { name, level, school, components, ritual, concentration, grimoire_spells } = spells
 
-    // console.log(spells)
-    
-    // grimSpells.map(grimSpell => setGrimId(grimSpell.id))
+    // console.log(grimId)
 
-    const removeOrAddButton = (grimId) => {
-        if (grimoire_spells.find(grimSpell => grimSpell.id === grimId)) {
-            return <button onClick={() => removeSpell(grimId)}>Remove Spell</button>
-        } else {
-            return  <button onClick={(e) => addSpell(spells.id, id, e)}>Add Spell</button>
-        }
-    }
+    const displaySpellButton =
+    grimId.map(grimSpellsId =>                 
+        <SpellButton 
+        key={grimSpellsId.id}
+        id={id}
+        spells={spells}
+        grimId={grimSpellsId}
+        grimSpells={grimoire_spells}
+        addSpell={addSpell}
+        removeSpell={removeSpell}
+        />
+        )
 
     return(
         <div>
@@ -24,7 +27,7 @@ const RenderSpells = ({ spells, id, grimId, setGrimId, grimSpells, addSpell, rem
                     <h4>School: {school}</h4>
                     <h4>Components: {components}</h4>
                     <h4>Ritual: {ritual} / Concentration: {concentration}</h4>
-                    {removeOrAddButton(grimId)}
+                    {displaySpellButton}
                 </div>
         </div>
     )

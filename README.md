@@ -18,7 +18,7 @@ This is the frontend of Mystra Grimoirium. If you would like to see the backend,
 
 ## Models and Relationships
 
-![My Data Relationships](./public/Initial-model-map.png)
+![My Data Relationships](./public/Final-Model-Map.png)
 
 ### User 
 A `User` has many `User Grimoires`, has many `Grimoires` through `User Grimoires`

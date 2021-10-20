@@ -20,7 +20,7 @@ const AddSpells = ({ spells, addSpell, removeSpell, path, id, grimId}) => {
         setPageNumber(selected);
     }
 
-    console.log(grimId)
+    // console.log(grimId)
 
 
     // grimSpells.map(grimSpell => setGrimId(grimSpell.id))
@@ -32,9 +32,7 @@ const AddSpells = ({ spells, addSpell, removeSpell, path, id, grimId}) => {
         spells={spells}
         addSpell={addSpell}
         removeSpell={removeSpell}
-        // grimId={grimId}
-        // setGrimId={setGrimId}
-        // grimSpells={grimDetails.grimoire_spells}
+        grimId={grimId}
         id={id}
         />
     )

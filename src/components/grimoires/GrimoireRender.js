@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const GrimoireRender = ({ grimoire }) => {
     const { title, image, id } = grimoire
 
-    // console.log(grimoire)
+    // console.log(id)
 
     let path = `/grimoires/${id}`
 

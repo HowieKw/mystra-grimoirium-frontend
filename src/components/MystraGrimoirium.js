@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useParams } from 'react-router-dom';
 import { Burger, Menu } from './MenuToggle';
 import { useOnClickOutside } from '../hooks'
 import Home from './Home';
@@ -16,7 +16,6 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     const [ grimoires, setGrimoires ] = useState([]);
     const [ spells, setSpells ] = useState([]);
     const [ grimSpells, setGrimSpells ] = useState([]);
-    const [ grimId, setGrimId ] = useState([])
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const node = useRef(); 
@@ -27,6 +26,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         .then(resp => resp.json())
         .then(grimoiresData => setGrimoires(grimoiresData))
     }, []);
+
 
     useEffect(() => {
         fetch("/spells")
@@ -64,7 +64,9 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
         }
 
+
         const removeSpell = (grimSpellId) => {
+            console.log(grimSpellId)
             return fetch(`/grimoire_spells/${grimSpellId}`, {
                 method: "DELETE",
                 credentials: 'include'
