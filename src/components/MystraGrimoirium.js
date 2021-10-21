@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Route, Switch, useParams } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Burger, Menu } from './MenuToggle';
 import { useOnClickOutside } from '../hooks'
 import Home from './Home';
@@ -7,12 +7,11 @@ import GrimoireList from './grimoires/GrimoireList';
 import MasterGrimoire from './grimoires/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
 import CreateGrimoire from './grimoires/CreateGrimoire';
-// import AddSpells from './spells/AddSpells';
 import SpellsGrim from './spells/SpellsGrim';
 
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
-    const [open, setOpen] = useState(false);
+    const [ open, setOpen ] = useState(false);
     const [ grimoires, setGrimoires ] = useState([]);
     const [ spells, setSpells ] = useState([]);
     const [ grimSpells, setGrimSpells ] = useState([]);
@@ -27,13 +26,20 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         .then(grimoiresData => setGrimoires(grimoiresData))
     }, []);
 
-
     useEffect(() => {
         fetch("/spells")
         .then(resp => resp.json())
         .then(spellsData => {
-                setSpells(spellsData);
-                setIsLoaded(true);
+            setSpells(spellsData);
+            setIsLoaded(true);
+        })
+    }, []);
+
+    useEffect(() => {
+        fetch("/grimoire_spells")
+        .then(resp => resp.json())
+        .then(grimSpellsData => {
+            setGrimSpells(grimSpellsData);
         })
     }, []);
 
@@ -64,6 +70,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
         }
 
+        
 
         const removeSpell = (grimSpellId) => {
             console.log(grimSpellId)
@@ -92,7 +99,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell}/>} /> 
+                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} associations={grimSpells}/>} /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 

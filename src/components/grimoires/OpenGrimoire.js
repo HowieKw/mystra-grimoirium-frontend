@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import GrimoireDetails from './GrimoireDetails';
-import SpellsGrim from '../spells/SpellsGrim';
 
 const OpenGrimoire = () => {
     const [grimDetails, setGrimDetails] = useState([]);
@@ -22,7 +21,7 @@ const OpenGrimoire = () => {
         return () => mounted = false;
     }, [id]);
 
-    // console.log(grimDetails.id)
+    console.log(grimDetails.grimoire_spells)
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 

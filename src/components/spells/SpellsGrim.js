@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import AddSpells from "./AddSpells";
 
-const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
-    const [ grimId, setGrimId] = useState([]);
+const SpellsGrim = ({ spells, addSpell, removeSpell, associations }) => {
+    const [ grimId, setGrimId ] = useState([]);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const id = useParams().id;
@@ -11,6 +11,7 @@ const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
 
     useEffect(() => {
         let mounted = true;
+
         fetch(`/grimoires/${id}`)
         .then(resp => resp.json())
         .then(grimoireData => {
@@ -20,24 +21,36 @@ const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
             }
         });
         return () => mounted = false;
-    }, [id]);
-
-    
+    }, []);
 
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
-    // console.log(grimId)
+    console.log(grimId)
+
+    // grimId.map(grimSpellId => setGrimId(grimSpellId))
+
+    // const displayAddSpells =
+    // grimId.map(grimSpellId =>
+    //     <AddSpells 
+    //     key={grimSpellId.id}
+    //     spells={spells} 
+    //     addSpell={addSpell} 
+    //     removeSpell={removeSpell}
+    //     grimId={grimSpellId}
+    //     />
+    //     )
 
     return (
         <div>
             <AddSpells 
-            spells={spells}
-            addSpell={addSpell}
-            removeSpell={removeSpell}
-            grimId={grimId}
-            path={path}
+            spells={spells} 
+            addSpell={addSpell} 
+            removeSpell={removeSpell} 
+            grimId={grimId} 
+            path={path} 
             id={id}
+            associations={associations}
             />
         </div>
     )

@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from "react-router-dom";
-import RenderSpells from "./RenderSpells";
+import SpellAssociations from './SpellAssociations';
 import ReactPaginate from 'react-paginate';
 
-const AddSpells = ({ spells, addSpell, removeSpell, path, id, grimId}) => {
+const AddSpells = ({ spells, addSpell, removeSpell, path, id, grimId, associations }) => {
     const [ pageNumber, setPageNumber ] = useState(0);
-    // const [ grimId, setGrimId ] = useState([])
-    // const [isLoaded, setIsLoaded] = useState(false);
-
-
-    // if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
     const spellsPerPage = 5
     const pagesVisited = pageNumber * spellsPerPage
@@ -20,23 +15,22 @@ const AddSpells = ({ spells, addSpell, removeSpell, path, id, grimId}) => {
         setPageNumber(selected);
     }
 
-    // console.log(grimId)
-
-
-    // grimSpells.map(grimSpell => setGrimId(grimSpell.id))
 
     const displaySpells =
     spellsDisplayed.map(spells =>
-        <RenderSpells 
+        <SpellAssociations 
         key={spells.id}
         spells={spells}
         addSpell={addSpell}
         removeSpell={removeSpell}
         grimId={grimId}
         id={id}
+        associations={associations}
         />
     )
 
+    // console.log(spells)
+    
     return (
         <div>
             {displaySpells}

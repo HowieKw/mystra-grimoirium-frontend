@@ -4,7 +4,7 @@ const MasterGrimoire = ({ spells, isLoaded }) => {
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
-    // console.log(currentSpells)
+    // console.log(spells)
 
     return(
         <section>
