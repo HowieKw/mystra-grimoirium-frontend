@@ -43,10 +43,10 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         })
     }, []);
 
-    const addSpell = (spellId, grimoireId, e) => {
+    const addSpell = (spellId, grimoireId) => {
         // console.log(spellId)
         // console.log(grimoireId)
-        e.preventDefault();
+        // e.preventDefault();
         return fetch('/grimoire_spells', {
             method: "POST",
             headers: {
@@ -70,7 +70,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
         }
 
-        
+        // console.log(grimSpells)
 
         const removeSpell = (grimSpellId) => {
             console.log(grimSpellId)
@@ -99,7 +99,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} associations={grimSpells}/>} /> 
+                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} />} /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 

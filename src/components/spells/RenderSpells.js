@@ -1,46 +1,56 @@
+import ReactPaginate from 'react-paginate';
+import React, { useState } from 'react'
 import SpellButton from "./SpellButton";
 
-const RenderSpells = ({ spells, id, grimId, addSpell, removeSpell, associations }) => {
+const RenderSpells = ({ spells, id, grimArray, addSpell, removeSpell }) => {
+    const [ pageNumber, setPageNumber ] = useState(0);
+    
+    const spellsPerPage = 5
+    const pagesVisited = pageNumber * spellsPerPage
+    const spellsDisplayed = spells.slice(pagesVisited, pagesVisited + spellsPerPage);
 
-    const { name, level, school, components, ritual, concentration, grimoire_spells } = spells
+    const pageCount = Math.ceil(spells.length / spellsPerPage);
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    }
 
-    // console.log(name)
+    // console.log(spellsDisplayed)
 
-    const displaySpellButton =
-    grimId.filter(grimSpell => grimSpell.id === grimSpell.id).map(grimSpellsId =>                 
-        <SpellButton 
-        key={grimSpellsId.id}
-        id={id}
-        spells={spells}
-        grimId={grimSpellsId}
-        grimSpells={grimoire_spells}
-        addSpell={addSpell}
-        removeSpell={removeSpell}
-        />
-        )
-
-        // grimId.filter(grimSpell => console.log(grimSpell))
 
     return(
         <div>
-            <div className="spellCards">
-                    <h3>{name}</h3>
-                    <h4>{level}</h4>
-                    <h4>School: {school}</h4>
-                    <h4>Components: {components}</h4>
-                    <h4>Ritual: {ritual} / Concentration: {concentration}</h4>
+            <div>
+                
+                {spellsDisplayed.map(spell => (
+                    <div key={spell.id} className="spellCards">
+                        <h3>{spell.name}</h3>
+                        <h4>{spell.level}</h4>
+                        <h4>School: {spell.school}</h4>
+                        <h4>Components: {spell.components}</h4>
+                        <h4>Ritual: {spell.ritual} / Concentration: {spell.concentration}</h4>
 
-                    {displaySpellButton}
+                        <SpellButton 
+                        spells={spell}
+                        spellsGrimArray={spell.grimoire_spells}
+                        id={id}
+                        grimSpellsArray={grimArray}
+                        addSpell={addSpell}
+                        removeSpell={removeSpell}
+                        />
+                    </div>
+                ))}
 
-                    {/* <SpellButton 
-                    // key={grimSpellsId.id}
-                    id={id}
-                    spells={spells}
-                    grimId={grimId}
-                    grimSpells={grimoire_spells}
-                    addSpell={addSpell}
-                    removeSpell={removeSpell}
-                    /> */}
+                    <ReactPaginate 
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"paginationBttns"}
+                    previousLinkClassName={"previousBttn"}
+                    nextLinkClassName={"nextBttn"}
+                    disabledClassName={"paginationDisabled"}
+                    activeClassName={"paginationActive"}
+                    />
             </div>
         </div>
     )

@@ -21,7 +21,7 @@ const OpenGrimoire = () => {
         return () => mounted = false;
     }, [id]);
 
-    console.log(grimDetails.grimoire_spells)
+    // console.log(grimDetails.grimoire_spells)
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
