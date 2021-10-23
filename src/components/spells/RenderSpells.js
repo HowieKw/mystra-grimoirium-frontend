@@ -32,7 +32,7 @@ const RenderSpells = ({ spells, id, grimArray, addSpell, removeSpell }) => {
                         <SpellButton 
                         spells={spell}
                         spellsGrimArray={spell.grimoire_spells}
-                        id={id}
+                        grimId={id}
                         grimSpellsArray={grimArray}
                         addSpell={addSpell}
                         removeSpell={removeSpell}

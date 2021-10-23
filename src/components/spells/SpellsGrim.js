@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import RenderSpells from "./RenderSpells";
 
 const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
-    const [ grimArray, setGrimArray ] = useState([]);
+    const [ grimArray, setGrimArray ] = useState(null);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const id = useParams().id;

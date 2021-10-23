@@ -1,13 +1,14 @@
 
 
-const SpellButton = ({ id, grimSpellsArray, addSpell, removeSpell, spellsGrimArray, spells }) => {
+const SpellButton = ({ grimId, grimSpellsArray, addSpell, removeSpell, spellsGrimArray, spells }) => {
 
-    const removeOrAddButton = (grimId) => {
-        // console.log(grimId)
-        if (spellsGrimArray.find(spellGrim => spellGrim.grimoire.id === grimId.id)) {
+    const removeOrAddButton = (grimSpell) => {
+        // console.log(grimSpell)
+        
+        if (spellsGrimArray.find(spellGrim => spellGrim.grimoire.id === grimSpell.id)) {
             return <button onClick={() => removeSpell()}>Remove Spell</button>
         } else {
-            return  <button onClick={() => addSpell(spells.id, id)}>Add Spell</button>
+            return  <button onClick={(e) => addSpell(spells.id, grimId, e)}>Add Spell</button>
         }
     }
 
@@ -26,7 +27,20 @@ export default SpellButton;
 
 
 
+// const arrayToConvert = grimSpell.grimoire_spells
+       
+//         const convertArrayToObject = (array, key) =>
+//             array.reduce(
+//                 (obj, item) => ({
+//                 ...obj,
+//                 [item[key]]: item
+//                 }),
+//                 {}
+//             );
 
+//         const grimSpellId = convertArrayToObject(arrayToConvert, 'id')
+//         // console.log(grimSpellId)
+//         // arrayToConvert.map(grim => console.log(grimSpellId[key].id))
 
 
 // import React, { useState } from 'react'

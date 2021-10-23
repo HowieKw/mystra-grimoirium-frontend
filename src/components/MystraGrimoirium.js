@@ -8,6 +8,7 @@ import MasterGrimoire from './grimoires/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
 import CreateGrimoire from './grimoires/CreateGrimoire';
 import SpellsGrim from './spells/SpellsGrim';
+import BookShelf from './BookShelf';
 
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
@@ -43,10 +44,10 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         })
     }, []);
 
-    const addSpell = (spellId, grimoireId) => {
+    const addSpell = (spellId, grimoireId, e) => {
         // console.log(spellId)
         // console.log(grimoireId)
-        // e.preventDefault();
+        e.preventDefault();
         return fetch('/grimoire_spells', {
             method: "POST",
             headers: {
