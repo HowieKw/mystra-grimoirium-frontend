@@ -1,13 +1,12 @@
 // import GrimoireSpells from './GrimoireSpells';
 // import { BasicTable } from '../datatable/BasicTable';
-import { SortingTable } from '../datatable/SortingTable';
 import { FilteringTable } from '../datatable/FilteringTable';
 
 const MasterGrimoire = ({ spells, isLoaded }) => {    
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
-    console.log(spells)
+    // console.log(spells)
 
     return(
         <section>

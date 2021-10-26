@@ -108,6 +108,8 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
                     <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires}/>} />
 
+                    <Route path="/bookshelf" component={() => <BookShelf />} />
+
                     <Route path="/" component={() => <Home />} />
                 </Switch>
             </nav>

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { Link } from "react-router-dom";
-import { useTable, useGlobalFilter, useFilters, useSortBy } from 'react-table'
+import { useTable, useGlobalFilter, useFilters, useSortBy, usePagination } from 'react-table'
 import './table.css'
 import { GlobalFilter } from './GlobalFilter'
 import { ColumnFilter } from './ColumnFilter'
@@ -77,7 +77,8 @@ export const FilteringTable = ({ spellsData }) => {
     },
     useFilters,
     useGlobalFilter,
-    useSortBy
+    useSortBy,
+    usePagination
     )
 
     const { globalFilter } = state

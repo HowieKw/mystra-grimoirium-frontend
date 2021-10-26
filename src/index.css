@@ -107,19 +107,68 @@ code {
 }
 
 
+/* SPELLPAGES */
 .paired {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .pair {
   width: 25%;
   overflow: hidden;
-  margin: auto;
 }
 
-.searchPaired {
-  /* width: 175px; */
+.categoryPaired {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+.categoryPair {
+  
+}
+
+.blankBook {
+  width: 80%;
+}
+
+.spellPage {
+  position: relative;
+  color: rgb(0, 0, 0);
+}
+
+.rightPage {
+  position: absolute;
+  top: 12%;
+  left: 32%;
+}
+
+.spellText{
+  width: 40%;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .searchPaired {
+  width: 175px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -128,12 +177,8 @@ code {
 .searchPair {
   width: 100px;
   overflow: hidden;
-  /* margin: auto; */
-}
-
-
-
-
+  margin: auto;
+} */
 
 
 

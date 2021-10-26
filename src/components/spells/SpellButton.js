@@ -8,7 +8,7 @@ const SpellButton = ({ grimId, grimSpellsArray, addSpell, removeSpell, spellsGri
         if (spellsGrimArray.find(spellGrim => spellGrim.grimoire.id === grimSpell.id)) {
 
             return grimSpell.grimoire_spells_with_spell_ids.map(grimSpellId => {
-                if (grimSpellId.assoc_spell == spells.id) {
+                if (grimSpellId.assoc_spell === spells.id) {
                 return <button onClick={(e) => {
                     e.preventDefault();
                     removeSpell(grimSpellId.grim_spell_id)}

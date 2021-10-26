@@ -21,7 +21,7 @@ const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
             }
         });
         return () => mounted = false;
-    }, []);
+    }, [id]);
 
 
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
