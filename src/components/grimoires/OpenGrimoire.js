@@ -26,7 +26,7 @@ const OpenGrimoire = () => {
     if (!isLoaded) return <h2>Revealing Spells...</h2>;
 
     return (
-        <section>
+        <section className="openGrimoire">
             <GrimoireDetails 
             key={grimDetails.id}
             grimDetails={grimDetails}

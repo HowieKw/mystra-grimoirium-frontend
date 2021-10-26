@@ -10,7 +10,7 @@ const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
 
     return (
         <section>
-            <div className="openBook">
+            <div>
     
                 <section id="table_of_contents">
                     <h1>{title}</h1>

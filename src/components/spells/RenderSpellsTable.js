@@ -89,7 +89,7 @@ export const RenderSpellsTable = ({ spellsData, id, grimArray, addSpell, removeS
     return (
         <>
         <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows} filter={globalFilter} setFilter={setGlobalFilter} />
-        <section>
+        <section className="spellScroll">
             <table {...getTableProps()} className="spellTable">
                 <thead>
                     {

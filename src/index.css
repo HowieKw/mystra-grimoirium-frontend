@@ -20,6 +20,19 @@ code {
   z-index: -1;
 }
 
+.homeIntro {
+  font-weight: bolder;
+  color: rgb(0, 162, 255);
+  font-size: 30px;
+  margin-top: 15%;
+}
+
+.whatDo{
+  color: rgb(0, 162, 255);
+  font-size: 20px;
+  margin-top: 10%;
+}
+
 /* GRIMOIRES */
 .grimoire-cards {
   display: grid;
@@ -76,20 +89,12 @@ code {
 /* OPEN GRIMOIRE/GRIMOIRE DETAILS */
 
 .openGrimoire {
-
+  /* background: url(https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color:rgb(0, 0, 0); */
 }
 
-.openBook {
-  /* background: url("https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png") no-repeat center center fixed;
-  padding: 50%;
-  z-index: -1;
-  display: flex;
-  flex-direction: row; */
-}
-
-#table_of_contents {
-  /* position: relative; */
-}
 
 /* SPELLCARDS */
 .spellCards {
@@ -126,15 +131,15 @@ code {
   /* margin: auto; */
 }
 
-/* .pair2 {
-  width: 50%;
-  overflow: hidden;
-  margin: auto;
-} */
+
+
+
+
+
 
 /* PAGINATION */
 
-.paginationBttns {
+/* .paginationBttns {
   width: 80%;
   height: 40px;
   list-style: none;
@@ -159,4 +164,4 @@ code {
 .paginationActive a {
   color: rgb(32, 114, 0);
   background-color: rgb(255, 230, 0);
-}
+} */

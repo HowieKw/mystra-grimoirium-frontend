@@ -10,7 +10,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     color: #EFFFFA;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
     text-rendering: optimizeLegibility;
   }
   `
