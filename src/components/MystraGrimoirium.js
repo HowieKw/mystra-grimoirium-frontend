@@ -8,6 +8,7 @@ import MasterGrimoire from './grimoires/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
 import CreateGrimoire from './grimoires/CreateGrimoire';
 import SpellsGrim from './spells/SpellsGrim';
+import SpellsDetails from './spells/SpellsDetail';
 import BookShelf from './BookShelf';
 
 
@@ -27,27 +28,23 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         .then(grimoiresData => setGrimoires(grimoiresData))
     }, []);
 
-    useEffect(() => {
+    const fetchThoseSpells = () => {
         fetch("/spells")
         .then(resp => resp.json())
         .then(spellsData => {
             setSpells(spellsData);
             setIsLoaded(true);
         })
-    }, []);
+    } 
 
-    useEffect(() => {
-        fetch("/grimoire_spells")
-        .then(resp => resp.json())
-        .then(grimSpellsData => {
-            setGrimSpells(grimSpellsData);
-        })
-    }, []);
+    useEffect(
+        fetchThoseSpells
+    , []);
 
-    const addSpell = (spellId, grimoireId, e) => {
+    const addSpell = (spellId, grimoireId) => {
         // console.log(spellId)
         // console.log(grimoireId)
-        e.preventDefault();
+        // e.preventDefault();
         return fetch('/grimoire_spells', {
             method: "POST",
             headers: {
@@ -68,25 +65,24 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
             .then(addedSpell => {
               setGrimSpells(grimSpells.concat(addedSpell))
+              fetchThoseSpells()
             })
         }
 
-        // console.log(grimSpells)
-
-        const removeSpell = (grimSpellId) => {
-            console.log(grimSpellId)
-            return fetch(`/grimoire_spells/${grimSpellId}`, {
-                method: "DELETE",
-                credentials: 'include'
-            })
-                .then(res => {
-                if (res.ok) {
-                    const updatedGrimoreSpells = grimSpells.filter(grimSpell => grimSpell.id !== grimSpellId)
-                    setGrimSpells(updatedGrimoreSpells)
-                }
-                })
+    const removeSpell = (grimSpellId) => {
+        // console.log(grimSpellId)
+        return fetch(`/grimoire_spells/${grimSpellId}`, {
+            method: "DELETE",
+            credentials: 'include'
+        })
+            .then(res => {
+            if (res.ok) {
+                const updatedGrimoreSpells = grimSpells.filter(grimSpell => grimSpell.id !== grimSpellId)
+                setGrimSpells(updatedGrimoreSpells)
+                fetchThoseSpells()
             }
-
+            })
+        }
 
     return(
         <div>
@@ -100,7 +96,9 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} />} /> 
+                    <Route path="/spell/:id" component={() => <SpellsDetails />} />
+
+                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} /> } /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
 import RenderSpells from "./RenderSpells";
+import { RenderSpellsTable } from './RenderSpellsTable';
 
 const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
-    const [ grimArray, setGrimArray ] = useState(null);
+    const [ grimArray, setGrimArray ] = useState([]);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const id = useParams().id;
@@ -31,8 +32,15 @@ const SpellsGrim = ({ spells, addSpell, removeSpell }) => {
 
     return (
         <div>
-            <RenderSpells
+            {/* <RenderSpells
             spells={spells} 
+            addSpell={addSpell} 
+            removeSpell={removeSpell} 
+            grimArray={grimArray} 
+            id={id}
+            /> */}
+            <RenderSpellsTable
+            spellsData={spells} 
             addSpell={addSpell} 
             removeSpell={removeSpell} 
             grimArray={grimArray} 

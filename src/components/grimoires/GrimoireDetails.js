@@ -1,10 +1,10 @@
-import GrimoireSpells from "./GrimoireSpells"
 import { Link } from "react-router-dom";
+import { FilteringTable } from "../datatable/FilteringTable";
 
 const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
     const { title, id } = grimDetails
 
-    // console.log(id)
+    // console.log(grimoireSpells)
 
     let path = `/grimoires/${id}/add_spells`
 
@@ -17,7 +17,7 @@ const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
                 </section>
 
                 <section id="rendered_spells">
-                    <GrimoireSpells spells={grimoireSpells}/>
+                    <FilteringTable spellsData={grimoireSpells}/>
                     <Link to={path}>
                         <button>Add Spells</button>
                     </Link>

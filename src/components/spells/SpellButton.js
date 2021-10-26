@@ -6,14 +6,27 @@ const SpellButton = ({ grimId, grimSpellsArray, addSpell, removeSpell, spellsGri
         // console.log(grimSpell)
         
         if (spellsGrimArray.find(spellGrim => spellGrim.grimoire.id === grimSpell.id)) {
-            return <button onClick={() => removeSpell()}>Remove Spell</button>
+
+            return grimSpell.grimoire_spells_with_spell_ids.map(grimSpellId => {
+                if (grimSpellId.assoc_spell == spells.id) {
+                return <button onClick={(e) => {
+                    e.preventDefault();
+                    removeSpell(grimSpellId.grim_spell_id)}
+                }>Remove Spell</button>
+            }
+        })
+
         } else {
-            return  <button onClick={(e) => addSpell(spells.id, grimId, e)}>Add Spell</button>
+            return  <button onClick={(e) => {
+                e.preventDefault();
+                addSpell(spells.id, grimId)}
+            }>Add Spell</button>
         }
     }
+    
 
-    // console.log(grimSpellsArray)
-    // console.log(spellsGrimArray.map(spellGrim => spellGrim.grimoire))
+    // console.log()
+    // console.log(spellsGrimArray)
 
     return (
         <div>
