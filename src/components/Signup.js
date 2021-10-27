@@ -46,6 +46,7 @@ function Signup({ setCurrentUser }) {
           >
             Username
           </label>
+          <br></br>
           <input
             type="text"
             name="username"
@@ -61,6 +62,7 @@ function Signup({ setCurrentUser }) {
           >
             Password
           </label>
+          <br></br>
           <input
             type="password"
             name=""
@@ -77,6 +79,7 @@ function Signup({ setCurrentUser }) {
           >
             Password Confirmation
           </label>
+          <br></br>
           <input
             type="password"
             name="password_confirmation"
