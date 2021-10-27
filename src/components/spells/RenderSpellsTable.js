@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { useTable, useGlobalFilter, useFilters, useSortBy } from 'react-table'
 import '../datatable/table.css'
 import { GlobalFilter } from '../datatable/GlobalFilter'
 import { ColumnFilter } from '../datatable/ColumnFilter'
 import SpellButton from './SpellButton'
 
-export const RenderSpellsTable = ({ spellsData, id, grimArray, addSpell, removeSpell }) => {
+export const RenderSpellsTable = ({ spellsData, grimId, grimArray, addSpell, removeSpell }) => {
 
     const Columns = [
         {
@@ -58,7 +59,7 @@ export const RenderSpellsTable = ({ spellsData, id, grimArray, addSpell, removeS
                     key={spellsData.id} 
                     spells={spellsData}
                     spellsGrimArray={spellsData.grimoire_spells}
-                    grimId={id}
+                    grimId={grimId}
                     grimSpellsArray={grimArray}
                     addSpell={addSpell}
                     removeSpell={removeSpell}
@@ -69,6 +70,8 @@ export const RenderSpellsTable = ({ spellsData, id, grimArray, addSpell, removeS
             disableFilters: true
         }
     ]
+
+    let path = `/grimoires/${grimId}`
 
     // console.log(spellsData)
 
@@ -88,51 +91,59 @@ export const RenderSpellsTable = ({ spellsData, id, grimArray, addSpell, removeS
 
     return (
         <>
-        <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows} filter={globalFilter} setFilter={setGlobalFilter} />
-        <section className="spellScroll">
-            <table {...getTableProps()} className="spellTable">
-                <thead>
-                    {
-                        headerGroups.map(headerGroup => (
-                            <tr {...headerGroup.getHeaderGroupProps()}>
-                                {
-                                    headerGroup.headers.map(column => (
-                                        <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}
-                                            <span>
-                                                {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : '⏺'}
-                                            </span>
+        <section className="spellPage">
+        <img className="blankScroll" alt="blankBook" src="https://res.cloudinary.com/djzhu5kfj/image/upload/v1635192945/Flatiron%20-%20Final%20Project/pngegg_rmzbxz.png"/>
+            <div className="spellsListAdd">
+                <GlobalFilter preGlobalFilteredRows={preGlobalFilteredRows} filter={globalFilter} setFilter={setGlobalFilter} />
+                <section>
+                    <table {...getTableProps()} className="spellTable">
+                        <thead>
+                            {
+                                headerGroups.map(headerGroup => (
+                                    <tr {...headerGroup.getHeaderGroupProps()}>
+                                        {
+                                            headerGroup.headers.map(column => (
+                                                <th {...column.getHeaderProps(column.getSortByToggleProps())}>{column.render('Header')}
+                                                    <span>
+                                                        {column.isSorted ? (column.isSortedDesc ? '🔽' : '🔼') : '⏺'}
+                                                    </span>
 
-                                            <div>{column.canFilter ? column.render('Filter') : null}</div>
-                                        </th>
-                                    ))
-                                }
+                                                    <div>{column.canFilter ? column.render('Filter') : null}</div>
+                                                </th>
+                                            ))
+                                        }
+                                    </tr>
+                                ))
+                            }
+                            <tr>
+                            
                             </tr>
-                        ))
-                    }
-                    <tr>
-                    
-                    </tr>
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {
-                        rows.map(row => {
-                            prepareRow(row)
-                            return (
-                                <tr {...row.getRowProps()}>
-                                    {
-                                        row.cells.map(cell => {
-                                            return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                            {
+                                rows.map(row => {
+                                    prepareRow(row)
+                                    return (
+                                        <tr {...row.getRowProps()}>
+                                            {
+                                                row.cells.map(cell => {
+                                                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
 
-                                        })
-                                    }
-                                </tr>
+                                                })
+                                            }
+                                        </tr>
 
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
-       </section>
+                                    )
+                                })
+                            }
+                        </tbody>
+                    </table>
+            </section>
+            <Link to={path}>
+                <button>Return to Grimoire</button>
+            </Link>
+            </div>
+        </section>
        </>
     )
 }

@@ -6,11 +6,13 @@ const SpellsDetails = () => {
     const [ spellsDetail, setSpellsDetail ] = useState([]);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
-    const id = useParams().id;
+    // const id = useParams().id;
+
+    const { spellId } = useParams();
 
     useEffect(() => {
         let mounted = true;
-        fetch(`/spells/${id}`)
+        fetch(`/spells/${spellId}`)
         .then(resp => resp.json())
         .then(spellDetailData => {
             if(mounted) {
@@ -19,7 +21,7 @@ const SpellsDetails = () => {
             }
         });
         return () => mounted = false;
-    }, [id]);
+    }, [spellId]);
 
     // console.log(spellsDetail)
 

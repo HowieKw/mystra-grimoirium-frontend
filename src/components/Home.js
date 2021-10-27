@@ -9,6 +9,7 @@ const Home = () => {
     
     return(
         <section>
+            
             <div className="homeIntro">
                 <h1>Welcome to the Grand Grimoirium,</h1>
                 <h1>bestowed upon us by the Goddess Mystra</h1>
@@ -19,13 +20,13 @@ const Home = () => {
             
             <div className="frontButts">
                 <Link to={createPath}>
-                    <button>Create Grimoire</button>
+                    <button className="butt">Create Grimoire</button>
                 </Link>
                 <Link to={grimoirePath}>
-                    <button>Checkout Grimoires</button>
+                    <button className="butt">Checkout Grimoires</button>
                 </Link>
                 <Link to={researchPath}>
-                    <button>Research Spells</button>
+                    <button className="butt">Research Spells</button>
                 </Link>
             </div>
         </section>

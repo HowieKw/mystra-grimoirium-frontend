@@ -34,36 +34,52 @@ const CreateGrimoire = ({ grimoires, setGrimoires }) => {
         }
 
     return (
-        <div className="createGrimoire">
-            <form onSubmit={createGrimoire}>
-                <p>
-                <label htmlFor="title">
-                    Title
-                </label>
-                    <input
-                    type="text"
-                    name="username"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    className="inputArea"
-                    />
-                </p>
+        
+        <div>
+            <div style={{marginTop: "5%"}}>
+                <h1>With Mystra's guidance,</h1>
+                <h1>create your own grimoire.</h1>
+            </div>
 
-                <p>
-                <label htmlFor="grimoire cover">
-                    Grimoire Cover
-                </label>
-                    <input
-                    type="text"
-                    name="grimoire cover"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
-                    className="inputArea"
-                    />
-                </p>
+            <video autoPlay muted loop id="mystra">
+                <source src="https://res.cloudinary.com/djzhu5kfj/video/upload/v1635297752/Flatiron%20-%20Final%20Project/Mystra_kdraju.mp4" type="video/mp4" />
+            </video>
 
-                <p><button type="submit" className="butt" id="authButton">Create Grimoire</button></p>
-            </form>
+            <div className="createGrimoire">
+                <form onSubmit={createGrimoire}>
+                    <p>
+                    <label htmlFor="title">
+                        Title
+                    </label>
+                    <br></br>
+                        <input
+                        type="text"
+                        name="username"
+                        placeholder="Title of grimoire..."
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className="inputArea"
+                        />
+                    </p>
+
+                    <p>
+                    <label htmlFor="grimoire cover">
+                        Grimoire Cover
+                    </label>
+                    <br></br>
+                        <input
+                        type="text"
+                        name="grimoire cover"
+                        placeholder="Image URL..."
+                        value={image}
+                        onChange={(e) => setImage(e.target.value)}
+                        className="inputArea"
+                        />
+                    </p>
+
+                    <div><button type="submit" className="createButt" id="authButton">Create Grimoire</button></div>
+                </form>
+            </div>
         </div>
     )
 }

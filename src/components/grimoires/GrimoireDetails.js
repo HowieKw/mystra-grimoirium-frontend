@@ -1,26 +1,21 @@
-import { Link } from "react-router-dom";
 import { FilteringTable } from "../datatable/FilteringTable";
 
-const GrimoireDetails = ({ grimDetails, grimoireSpells }) => {
-    const { title, id } = grimDetails
+const GrimoireDetails = ({ grimDetails, grimoireSpells, grimId }) => {
+    const { title } = grimDetails
 
     // console.log(grimoireSpells)
 
-    let path = `/grimoires/${id}/add_spells`
 
     return (
         <section>
             <div>
     
-                <section id="table_of_contents">
-                    <h1>{title}</h1>
+                <section className="grimoireTitle">
+                    <h2>{title}</h2>
                 </section>
 
                 <section id="rendered_spells">
-                    <FilteringTable spellsData={grimoireSpells}/>
-                    <Link to={path}>
-                        <button>Add Spells</button>
-                    </Link>
+                    <FilteringTable spellsData={grimoireSpells} grimId={grimId}/>
                 </section>
             </div>
         </section>

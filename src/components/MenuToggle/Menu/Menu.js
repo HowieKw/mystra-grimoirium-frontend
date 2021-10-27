@@ -31,6 +31,16 @@ const Menu = ({ open, setCurrentUser }) => {
         </nav>
 
         <br></br>
+        <br></br>
+
+        <nav>
+          <NavLink exact to="/bookshelf">
+            Bookshelf
+          </NavLink>
+        </nav>
+
+        <br></br>
+        <br></br>
         
         <nav>
           <NavLink exact to="/grimoires">
@@ -38,6 +48,7 @@ const Menu = ({ open, setCurrentUser }) => {
           </NavLink>
         </nav>
 
+        <br></br>
         <br></br>
 
         <nav>

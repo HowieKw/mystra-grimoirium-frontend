@@ -11,11 +11,10 @@ const MasterGrimoire = ({ spells, isLoaded }) => {
     return(
         <section>
             <section>
-                <h1 className="title">Mystra's Master Grimoire</h1>
+                <h1 className="masterTitle">Mystra's Master Grimoire</h1>
             </section>
 
             <section>
-                {/* <GrimoireSpells spells={spells}/> */}
                 <FilteringTable spellsData={spells}/>
             </section>
         </section>

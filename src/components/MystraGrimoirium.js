@@ -4,12 +4,12 @@ import { Burger, Menu } from './MenuToggle';
 import { useOnClickOutside } from '../hooks'
 import Home from './Home';
 import GrimoireList from './grimoires/GrimoireList';
-import MasterGrimoire from './grimoires/MasterGrimoire';
+import MasterGrimoire from './MasterGrimoire/MasterGrimoire';
 import OpenGrimoire from './grimoires/OpenGrimoire';
 import CreateGrimoire from './grimoires/CreateGrimoire';
 import SpellsGrim from './spells/SpellsGrim';
 import SpellsDetails from './spells/SpellsDetail';
-import BookShelf from './BookShelf';
+import Bookshelf from './bookshelf/Bookshelf';
 
 
 const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
@@ -17,6 +17,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     const [ grimoires, setGrimoires ] = useState([]);
     const [ spells, setSpells ] = useState([]);
     const [ grimSpells, setGrimSpells ] = useState([]);
+    const [ userGrimoire, setUserGrimoire ] = useState([]);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
     const node = useRef(); 
@@ -37,9 +38,19 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
         })
     } 
 
+    const fetchThoseUserGrims = () => {
+        fetch("/user_grimoires")
+        .then(resp => resp.json())
+        .then(userGrimData => {
+            setUserGrimoire(userGrimData);
+        })
+    }
+
     useEffect(
-        fetchThoseSpells
+        fetchThoseSpells,
+        fetchThoseUserGrims
     , []);
+
 
     const addSpell = (spellId, grimoireId) => {
         // console.log(spellId)
@@ -84,6 +95,29 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
         }
 
+        const addGrimoire = (grimId) => {
+            return fetch("/user_grimoires", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              credentials: 'include',
+              body: JSON.stringify(grimId)
+            })
+              .then(res => {
+                if (res.ok) {
+                  alert("Favorited!")
+                  return res.json()
+                } else {
+                  alert("Grimoire has already been added!")
+                  return res.json().then(errors => Promise.reject(errors))
+                }
+              })
+              .then(grimoire => {
+                setUserGrimoire(userGrimoire.concat(grimoire))
+              })
+          }
+
     return(
         <div>
 
@@ -96,19 +130,19 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
             <nav>
                 <Switch>
-                    <Route path="/spell/:id" component={() => <SpellsDetails />} />
+                    <Route path="/grimoires/:grimId/spell/:spellId" component={() => <SpellsDetails />} />
 
-                    <Route path="/grimoires/:id/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} /> } /> 
+                    <Route path="/grimoires/:grimId/add_spells" component={() => <SpellsGrim spells={spells} addSpell={addSpell} removeSpell={removeSpell} /> } /> 
 
                     <Route path="/create_grimoire" component={() => <CreateGrimoire grimoires={grimoires} setGrimoires={setGrimoires}/>} /> 
 
                     <Route path="/grimoires/master_grimoire" component={() => <MasterGrimoire spells={spells} isLoaded={isLoaded} />} />
 
-                    <Route path="/grimoires/:id" component={() => <OpenGrimoire />} />
+                    <Route path="/grimoires/:grimId" component={() => <OpenGrimoire />} />
 
-                    <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires}/>} />
+                    <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires} addGrimoire={addGrimoire}/>} />
 
-                    <Route path="/bookshelf" component={() => <BookShelf />} />
+                    <Route path="/bookshelf" component={() => <Bookshelf userGrimoire={userGrimoire}/>} />
 
                     <Route path="/" component={() => <Home />} />
                 </Switch>

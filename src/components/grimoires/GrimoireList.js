@@ -17,7 +17,7 @@ const GrimoireList = ({ grimoires }) => {
         )
 
     return(
-        <section>
+        <section className="grimoireList">
             <div className="grimoire-cards">
                 <section className="container">
                     <Link to={path}>

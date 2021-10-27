@@ -40,6 +40,7 @@ function Login({ setCurrentUser }) {
           >
             Username
           </label>
+          <br></br>
           <input
             type="text"
             name="username"
@@ -55,6 +56,7 @@ function Login({ setCurrentUser }) {
           >
             Password
           </label>
+          <br></br>
           <input
             type="password"
             name=""
@@ -64,9 +66,9 @@ function Login({ setCurrentUser }) {
           />
         </p>
 
-        <p><button type="submit" className="butt" id="authButton">Log In</button></p>
+        <p><button type="submit" className="authButt" id="authButton">Log In</button></p>
         <p>-- or --</p>
-        <p><Link className="butt" to="/signup">Sign Up</Link></p>
+        <p><Link className="authButt" to="/signup">Sign Up</Link></p>
 
       </form>
     </div>

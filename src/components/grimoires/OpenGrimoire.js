@@ -6,11 +6,11 @@ const OpenGrimoire = () => {
     const [grimDetails, setGrimDetails] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
     
-    const id = useParams().id;
+    const { grimId } = useParams();
 
     useEffect(() => {
         let mounted = true;
-        fetch(`/grimoires/${id}`)
+        fetch(`/grimoires/${grimId}`)
         .then(resp => resp.json())
         .then(grimoireData => {
             if(mounted) {
@@ -19,7 +19,7 @@ const OpenGrimoire = () => {
             }
         });
         return () => mounted = false;
-    }, [id]);
+    }, [grimId]);
 
     // console.log(grimDetails.grimoire_spells)
 
@@ -31,6 +31,7 @@ const OpenGrimoire = () => {
             key={grimDetails.id}
             grimDetails={grimDetails}
             grimoireSpells={grimDetails.added_spells}
+            grimId={grimId}
             />
         </section>
     )

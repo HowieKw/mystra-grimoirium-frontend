@@ -3,14 +3,6 @@ code {
     monospace;
 }
 
-/* body {
-  background: url("https://res.cloudinary.com/djzhu5kfj/video/upload/v1634615538/Flatiron%20-%20Final%20Project/Background_g6wkqp.mp4") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-} */
-
 #videoBackground {
   position: fixed;
   right: 0;
@@ -20,11 +12,29 @@ code {
   z-index: -1;
 }
 
+.authForm {
+  width: 50%;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  margin: auto;
+  background: rgba(187, 184, 0, 0.61);
+  color: rgb(0, 0, 0);
+  margin-top: 10rem;
+  border-radius: 20px;
+}
+
 .homeIntro {
   font-weight: bolder;
   color: rgb(0, 162, 255);
   font-size: 30px;
-  margin-top: 15%;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  
+  border: 6px solid;
+  border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
+  border-radius: 20px;
 }
 
 .whatDo{
@@ -32,6 +42,68 @@ code {
   font-size: 20px;
   margin-top: 10%;
 }
+
+.butt {
+  display: inline-block;
+  padding: 1.5em 1.5em;
+  margin: 0em 2em .1em 1em;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 17px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+
+.butt:hover {
+  border-color: rgb(68, 0, 255);
+}
+
+@media all and (max-width:30em){
+  .butt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
+
+.authButt {
+  display: inline-block;
+  padding: 1.5em 1.5em;
+  margin: 0em 0.1em 0.1em 1em;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 17px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+
+.authButt:hover {
+  border-color: rgb(68, 0, 255);
+}
+
+@media all and (max-width:30em){
+  .authButt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
+
+
 
 /* GRIMOIRES */
 .grimoire-cards {
@@ -58,6 +130,9 @@ code {
   box-shadow: 0px 0px 15px 0px;
 }
 
+.grimoireList {
+  margin-top: 3%;
+}
 
 /* MASTER GRIMOIRE */
 #master-grimoire {
@@ -85,14 +160,28 @@ code {
   color: rgb(218, 196, 0)
 }
 
+.masterTitle {
+  margin-top: 3%;
+  font-size: 25px;
+}
 
 /* OPEN GRIMOIRE/GRIMOIRE DETAILS */
 
-.openGrimoire {
-  /* background: url(https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  color:rgb(0, 0, 0); */
+.spellsList {
+  position: absolute;
+  top: 6%;
+  left: 32%;
+}
+
+.spellsListAdd {
+  position: absolute;
+  top: 18%;
+  left: 30.5%;
+}
+
+.grimoireTitle {
+  margin-top: 3%;
+  font-size: 25px;
 }
 
 
@@ -112,10 +201,11 @@ code {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  gap: 30px;
 }
 
 .pair {
-  width: 25%;
+  width: 28%;
   overflow: hidden;
 }
 
@@ -126,39 +216,116 @@ code {
   gap: 10px;
 }
 
-.categoryPair {
-  
-}
 
 .blankBook {
-  width: 80%;
+  margin-top: -4%;
+  margin-bottom: -5%;
+  width: 1750px;
 }
+
+.blankScroll {
+  width: 1100px;
+}
+
 
 .spellPage {
   position: relative;
   color: rgb(0, 0, 0);
 }
 
-.rightPage {
+.spellChapter{
   position: absolute;
   top: 12%;
-  left: 32%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.rightPage {
+  width: 30%;
+}
+
+.leftPage {
+  width: 30%;
 }
 
 .spellText{
-  width: 40%;
+  width: 80%;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.ritualText {
+  width: 80%;
   margin-left:  auto;
   margin-right: auto;
 }
 
 
+/* CREATE GRIMOIRE */
 
+#mystra {
+  z-index: 1;
+  border-radius: 30px;
+  width: 500px;
+}
 
+label{
+  font-size: 25px;
+}
 
+.inputArea {
+  background-color: rgba(255, 255, 255, 0.61);
+  padding: 10px 40px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  outline: 0;
+  border-width: 0 0 3px;
+  border-color: rgb(136, 154, 168);
+  font-size: 15px;
+}
 
+.inputArea:focus {
+  border-color: springgreen;
+}
 
+.inputArea, select, textarea {
+  color: rgb(43, 226, 104);
+}
 
+textarea:focus, .inputArea:focus {
+  color: blueviolet;
+}
 
+.createButt {
+  display: inline-block;
+  padding: .5em .8em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 17px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.createButt:hover {
+  border-color: rgb(68, 0, 255);
+}
+
+@media all and (max-width:30em){
+  .createButt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
 
 
 
