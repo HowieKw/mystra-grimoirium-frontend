@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GrimoireRender from "./GrimoireRender";
 
-const GrimoireList = ({ grimoires }) => {
+const GrimoireList = ({ grimoires, addGrimoire, removeGrimoire, userGrimoire }) => {
 
     // console.log(grimoires) 
     // console.log(spells) 
@@ -13,6 +13,9 @@ const GrimoireList = ({ grimoires }) => {
         <GrimoireRender 
         key={grimoire.id}
         grimoire={grimoire}
+        addGrimoire={addGrimoire}
+        removeGrimoire={removeGrimoire}
+        userGrimoires={userGrimoire}
         />
         )
 

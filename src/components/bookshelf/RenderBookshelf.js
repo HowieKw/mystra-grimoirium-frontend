@@ -1,25 +1,20 @@
-import GrimoireRender from "./GrimoireRender";
+import GrimoireRender from "../grimoires/GrimoireRender"
 
-const RenderBookshelf = ({ grimoires }) => {
+const RenderBookshelf = ({ grimoires, userGrimoires, removeGrimoire }) => {
 
     // console.log(grimoires) 
-    // console.log(spells) 
+    // console.log(userGrimId) 
 
-    let path = "/grimoires/master_grimoire"
-
-    const displayGrimoire = 
-    grimoires.map(grimoire =>
-        <GrimoireRender 
-        key={grimoire.id}
-        grimoire={grimoire}
-        />
-        )
 
     return(
         <section className="grimoireList">
             <div>
                 <section className="grimoire-cards">
-                    {displayGrimoire}
+                    <GrimoireRender 
+                    grimoire={grimoires}
+                    userGrimoires={userGrimoires}
+                    removeGrimoire={removeGrimoire}
+                    />
                 </section>
             </div>
         </section>

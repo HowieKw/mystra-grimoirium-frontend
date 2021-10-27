@@ -23,12 +23,13 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     const node = useRef(); 
     useOnClickOutside(node, () => setOpen(false));
 
-    useEffect(() => {
+    const fetchThoseGrimoires = () => {
         fetch("/grimoires")
         .then(resp => resp.json())
         .then(grimoiresData => setGrimoires(grimoiresData))
-    }, []);
-
+    }
+    
+    
     const fetchThoseSpells = () => {
         fetch("/spells")
         .then(resp => resp.json())
@@ -37,7 +38,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             setIsLoaded(true);
         })
     } 
-
+    
     const fetchThoseUserGrims = () => {
         fetch("/user_grimoires")
         .then(resp => resp.json())
@@ -47,15 +48,20 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
     }
 
     useEffect(
-        fetchThoseSpells,
+        fetchThoseGrimoires
+    , []);
+    
+    useEffect(
+        fetchThoseSpells
+    , []);
+
+    useEffect(
         fetchThoseUserGrims
     , []);
 
 
     const addSpell = (spellId, grimoireId) => {
-        // console.log(spellId)
-        // console.log(grimoireId)
-        // e.preventDefault();
+        
         return fetch('/grimoire_spells', {
             method: "POST",
             headers: {
@@ -106,17 +112,30 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
             })
               .then(res => {
                 if (res.ok) {
-                  alert("Favorited!")
                   return res.json()
                 } else {
-                  alert("Grimoire has already been added!")
                   return res.json().then(errors => Promise.reject(errors))
                 }
               })
               .then(grimoire => {
                 setUserGrimoire(userGrimoire.concat(grimoire))
+                fetchThoseGrimoires()
+                fetchThoseUserGrims()
               })
           }
+
+          const removeGrimoire = (grimId) => {
+            return fetch(`/user_grimoires/${grimId}`, {
+                method: "DELETE",
+                credentials: 'include'
+            })
+                .then(res => {
+                if (res.ok) {
+                    const updatedUserGrimoires = userGrimoire.filter(grimoire => grimoire.id !== grimId)
+                    setUserGrimoire(updatedUserGrimoires)
+                }
+                })
+            }
 
     return(
         <div>
@@ -140,9 +159,9 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
                     <Route path="/grimoires/:grimId" component={() => <OpenGrimoire />} />
 
-                    <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires} addGrimoire={addGrimoire}/>} />
+                    <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires} addGrimoire={addGrimoire} removeGrimoire={removeGrimoire} userGrimoire={userGrimoire}/>} />
 
-                    <Route path="/bookshelf" component={() => <Bookshelf userGrimoire={userGrimoire}/>} />
+                    <Route path="/bookshelf" component={() => <Bookshelf userGrimoire={userGrimoire} removeGrimoire={removeGrimoire} />} />
 
                     <Route path="/" component={() => <Home />} />
                 </Switch>

@@ -160,6 +160,13 @@ code {
   color: rgb(218, 196, 0)
 }
 
+#centeredButt {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .masterTitle {
   margin-top: 3%;
   font-size: 25px;
@@ -309,7 +316,7 @@ textarea:focus, .inputArea:focus {
   text-decoration: none;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 300px;
-  font-size: 17px;
+  font-size: 15px;
   color: rgb(0, 255, 191);
   text-shadow: 0 0.04em 0.04em slategray;
   text-align: center;
