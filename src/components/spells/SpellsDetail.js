@@ -31,7 +31,7 @@ const SpellsDetails = () => {
     return (
         <section className="spellPage">
             
-            <img className="blankBook" alt="blankBook" src="https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png"/>
+            <img className="spellBook" alt="blankBook" src="https://res.cloudinary.com/djzhu5kfj/image/upload/v1634620193/Flatiron%20-%20Final%20Project/Open_Grimoire_Edit_gty2rc.png"/>
 
             <SpellPage 
             key={spellsDetail.id}

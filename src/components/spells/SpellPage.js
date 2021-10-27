@@ -1,9 +1,12 @@
 import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
+import CastSpell from "./CastSpell";
 
 const SpellPage = ({ spellsDetail, tagsArray, dndClassArray }) => {
+    const [ buttonPopup, setButtonPopup ] = useState(false);
 
     const { grimId } = useParams();
-    console.log(grimId)
+    // console.log(spellsDetail)
 
     let grimPath = `/grimoires/${grimId}`
     let masterPath = `/grimoires/master_grimoire`
@@ -17,6 +20,7 @@ const SpellPage = ({ spellsDetail, tagsArray, dndClassArray }) => {
     }
 
     return (
+        <>
         <div className="spellChapter">
             <section className="leftPage"> 
                 <h2>Glossary</h2>
@@ -40,6 +44,7 @@ const SpellPage = ({ spellsDetail, tagsArray, dndClassArray }) => {
 
                 {returnToGrimoire()}
             </section>
+
             <section className="rightPage">
                 <h2>{spellsDetail.name}</h2>
                 <div className="paired">
@@ -81,8 +86,16 @@ const SpellPage = ({ spellsDetail, tagsArray, dndClassArray }) => {
                         {tagsArray.map(tag => <h4 className="categoryPair">{tag.name}</h4>)}
                     </div>
                 </div>
+
+            <button onClick={() => setButtonPopup(true)} className="spellButton">Cast Spell</button>
+            <CastSpell trigger={buttonPopup} setTrigger={setButtonPopup}>
+                <video src={spellsDetail.ani} autoPlay loop muted className="spellAni"/>
+            </CastSpell>
             </section>
         </div>
+        
+        
+        </>
     )
 }
 

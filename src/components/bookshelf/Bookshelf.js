@@ -16,6 +16,7 @@ const Bookshelf = ({ userGrimoire, removeGrimoire }) => {
 
     return (
         <div>
+            <h2></h2>
             {displayBookshelf}
         </div>
     )

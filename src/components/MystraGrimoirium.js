@@ -119,8 +119,8 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
               })
               .then(grimoire => {
                 setUserGrimoire(userGrimoire.concat(grimoire))
-                fetchThoseGrimoires()
                 fetchThoseUserGrims()
+                fetchThoseGrimoires()
               })
           }
 
