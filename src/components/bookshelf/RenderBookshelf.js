@@ -6,13 +6,10 @@ const RenderBookshelf = ({ grimoires, userGrimoires, removeGrimoire, user }) => 
     // console.log(userGrimId) 
 
 
-
-
     return(
-        <section className="grimoireList">
             <div>
-                <h1 className="collection">{user.username}'s Collection</h1>
-                <section className="grimoire-cards">
+                {/* <h1 className="collection">{user.username}'s Collection</h1> */}
+                <section>
                     <GrimoireRender 
                     grimoire={grimoires}
                     userGrimoires={userGrimoires}
@@ -20,7 +17,6 @@ const RenderBookshelf = ({ grimoires, userGrimoires, removeGrimoire, user }) => 
                     />
                 </section>
             </div>
-        </section>
     )
 }
 

@@ -1,6 +1,6 @@
 import RenderBookshelf from "./RenderBookshelf";
 
-const Bookshelf = ({ userGrimoire, removeGrimoire }) => {
+const Bookshelf = ({ userGrimoire, removeGrimoire, currentUser }) => {
 
     const displayBookshelf =
     userGrimoire.map(userGrim =>
@@ -13,12 +13,16 @@ const Bookshelf = ({ userGrimoire, removeGrimoire }) => {
         />
         )
 
-        // console.log(userGrimoire)
+        console.log(currentUser)
 
     return (
         <div>
-            <h2></h2>
-            {displayBookshelf}
+            <h1 className="collection">{currentUser.username}'s Collection</h1>
+            <div className="grimoireList">
+                <section className="grimoire-cards">
+                    {displayBookshelf}
+                </section>
+            </div>
         </div>
     )
 }

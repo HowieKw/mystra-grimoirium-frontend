@@ -162,7 +162,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
 
                     <Route path="/grimoires" component={() => <GrimoireList grimoires={grimoires} addGrimoire={addGrimoire} removeGrimoire={removeGrimoire} userGrimoire={userGrimoire}/>} />
 
-                    <Route path="/bookshelf" component={() => <Bookshelf userGrimoire={userGrimoire} removeGrimoire={removeGrimoire} />} />
+                    <Route path="/bookshelf" component={() => <Bookshelf userGrimoire={userGrimoire} removeGrimoire={removeGrimoire} currentUser={currentUser}/>} />
 
                     <Route path="/" component={() => <Home />} />
                 </Switch>
