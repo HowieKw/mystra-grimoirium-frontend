@@ -12,14 +12,26 @@ code {
   z-index: -1;
 }
 
+.appTitle {
+  font-size: 40px;
+  margin-top: 5%;
+
+  border: 6px solid;
+  border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 .authForm {
   width: 50%;
   overflow: hidden;
   box-shadow: 0px 0px 15px -5px;
   margin: auto;
-  background: rgba(187, 184, 0, 0.61);
+  background: rgba(255, 196, 0, 0.61);
   color: rgb(0, 0, 0);
-  margin-top: 10rem;
+  margin-top: 5rem;
   border-radius: 20px;
 }
 
@@ -34,7 +46,6 @@ code {
   
   border: 6px solid;
   border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
-  border-radius: 20px;
 }
 
 .whatDo{
@@ -134,6 +145,11 @@ button:hover {
 
 .grimoireList {
   margin-top: 3%;
+}
+
+.collection {
+  font-size: 30px;
+  margin-top: 5%;
 }
 
 /* MASTER GRIMOIRE */
@@ -259,6 +275,8 @@ button:hover {
 
 .rightPage {
   width: 26%;
+  height: 700px;
+  overflow-y: scroll;
 }
 
 .leftPage {
@@ -279,10 +297,11 @@ button:hover {
 
 .spellButton {
   display: inline-block;
-  padding: .5em .8em;
+  padding: 3em 1.3em;
   margin: 0 0.1em 0.1em 0;
   border: 0.16em solid rgb(45, 102, 167);
-  background-color: rgb(87, 90, 104);
+  background-image: url("https://res.cloudinary.com/djzhu5kfj/image/upload/c_crop,h_280,w_270/v1635357874/Flatiron%20-%20Final%20Project/Spell_button_lonmrf.gif");
+  background-size: cover;
   border-radius: 2em;
   box-sizing: border-box;
   text-decoration: none;

@@ -7,9 +7,11 @@ function UnauthenticatedApp({ setCurrentUser }) {
   return (
     <Switch>
       <Route exact path="/">
+        <h1 className="appTitle">Mystra Grimoirium</h1>
         <Login setCurrentUser={setCurrentUser} />
       </Route>
       <Route exact path="/signup">
+        <h1 className="appTitle">Mystra Grimoirium</h1>
         <Signup setCurrentUser={setCurrentUser}/>
       </Route>
       <Redirect to="/" />

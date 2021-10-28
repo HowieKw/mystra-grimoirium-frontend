@@ -21,6 +21,7 @@ const GrimoireList = ({ grimoires, addGrimoire, removeGrimoire, userGrimoire }) 
 
     return(
         <section className="grimoireList">
+                <h1 className="collection">Grimoirium Collection</h1>
             <div className="grimoire-cards">
                 <section className="container">
                     <Link to={path}>

@@ -9,6 +9,7 @@ const Bookshelf = ({ userGrimoire, removeGrimoire }) => {
         grimoires={userGrim.grimoire}
         userGrimoires={userGrimoire}
         removeGrimoire={removeGrimoire}
+        user={userGrim.user}
         />
         )
 

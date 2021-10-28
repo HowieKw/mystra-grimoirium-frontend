@@ -81,7 +81,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
               }
             })
             .then(addedSpell => {
-              setGrimSpells(grimSpells.concat(addedSpell))
+            //   setGrimSpells(grimSpells.concat(addedSpell))
               fetchThoseSpells()
             })
         }
@@ -118,7 +118,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
                 }
               })
               .then(grimoire => {
-                setUserGrimoire(userGrimoire.concat(grimoire))
+                // setUserGrimoire(userGrimoire.concat(grimoire))
                 fetchThoseUserGrims()
                 fetchThoseGrimoires()
               })
@@ -133,6 +133,7 @@ const MystraGrimoirium = ({ currentUser, setCurrentUser }) => {
                 if (res.ok) {
                     const updatedUserGrimoires = userGrimoire.filter(grimoire => grimoire.id !== grimId)
                     setUserGrimoire(updatedUserGrimoires)
+                    // fetchThoseGrimoires()
                 }
                 })
             }

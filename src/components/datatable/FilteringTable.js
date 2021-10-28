@@ -83,7 +83,7 @@ export const FilteringTable = ({ spellsData, grimId }) => {
     )
 
     const renderAddSpellsButton = (id) => {
-        console.log(id)
+        // console.log(id)
         if (id === undefined) {
             return 
         } else {
