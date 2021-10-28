@@ -14,33 +14,35 @@ This is the frontend of Mystra Grimoirium. If you would like to see the backend,
     * the master spellbook to go directly to all listed spells to do research.
 * Users will also be able to click into a grimoire that each have their own combination of current spells.
     * Users will then be able to click spells inside the grimoires to go in a full, page detail of the spell.
+    * Users will also be able to cast a spell and have an animation of the spell pop up.
 * Users are able to edit grimoires they created to update spells.
 
 ## Models and Relationships
 
-![My Data Relationships](./public/Initial-model-map.png)
+![My Data Relationships](./public/Final-Model-Map.png)
 
 ### User 
 A `User` has many `User Grimoires`, has many `Grimoires` through `User Grimoires`
+A `User` has many created `Grimoires`
 * username
 * password_digest
 
 ### User Grimoire
-`User Grimoires` belongs to `User`
-`User Grimoires` belongs to `Grimoires`
+`UserGrimoires` belongs to `User`
+`UserGrimoires` belongs to `Grimoires`
 
 ### Grimoire
-A `Grimoire` has many `User Grimoires`, has many `Users` through `User Grimoires`
-`Grimoire` has many spells
+A `Grimoire` belongs to `User`
+A `Grimoire` has many `User Grimoires`, has many authors or `Users` through `User Grimoires`
+`Grimoire` has many `GrimoireSpells`, has many `Spells` through `GrimoireSpells`
 * title
 * image
 
 ### Spell
-`Spell` belongs to `Grimoire`
-`Spell` belongs to `School`
-`Spell` belongs to `Level`
-`Spell` has many `Tags`
-`Spell` has many `Classes`
+`Spell` has many `Spelltags`, has many `Tags` through `Spelltags`
+`Spell` has many `Class-Spells`, has many `Classes` through `Class-Spells`
+`Spell` has many `GrimoireSpells`, has many `Grimoires` through `GrimoireSpells`
+
 * name
 * component
 * casting time
@@ -48,23 +50,19 @@ A `Grimoire` has many `User Grimoires`, has many `Users` through `User Grimoires
 * range/area
 * attack/save
 * description
-
-### School
-`School` has many `Spells`
-* name
-
-### Level
-`Level` has many `Spells`
-* name
+* ani
 
 ### Class
-`Class` has many `Spells`  
+`Class` has many `Class-Spells`, has many `Spells` through `Class-Spells`
 * name
 
 ### Tag
-`Tag` has many `Spells`
+`Tag` has many `Spelltags`, has many `Spells` through `Spelltags`
 * name
 
 ## Wirefream/Mockup
 
 View [here](https://www.figma.com/file/DyQl9tvtAueTZxkaUhr63o/D-and-D-Grimoire?node-id=0%3A1)
+
+# Developer
+* Howard Kwon

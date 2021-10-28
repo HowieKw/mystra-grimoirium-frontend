@@ -1,13 +1,456 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#videoBackground {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.appTitle {
+  font-size: 40px;
+  margin-top: 5%;
+
+  border: 6px solid;
+  border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.authForm {
+  width: 50%;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  margin: auto;
+  background: rgba(255, 196, 0, 0.61);
+  color: rgb(0, 0, 0);
+  margin-top: 5rem;
+  border-radius: 20px;
+}
+
+.homeIntro {
+  font-weight: bolder;
+  color: rgb(0, 162, 255);
+  font-size: 30px;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 35%;
+  
+  border: 6px solid;
+  border-image: linear-gradient(to left, turquoise, greenyellow) 1 0;
+}
+
+.whatDo{
+  color: rgb(0, 162, 255);
+  font-size: 20px;
+  margin-top: 10%;
+}
+
+.butt {
+  display: inline-block;
+  padding: 1.5em 1.5em;
+  margin: 0em 2em .1em 1em;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 17px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+
+@media all and (max-width:30em){
+  .butt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
+
+button:hover {
+  border-color: rgb(68, 0, 255);
+  cursor: pointer;
+}
+
+.authButt {
+  display: inline-block;
+  padding: 1.5em 1.5em;
+  margin: 0em 0.1em 0.1em 1em;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 17px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+
+.authButt:hover {
+  border-color: rgb(68, 0, 255);
+  cursor: pointer;
+}
+
+@media all and (max-width:30em){
+  .authButt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
+
+
+
+/* GRIMOIRES */
+.grimoire-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-template-rows: auto 1fr auto;
+  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.grimoire-cover {
+  width:  300px;
+  height: 300px;
+  border-radius: 25px;
+  transition: 0.3s;
+  animation: ease-in;
+}
+
+.grimoire-cover:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px 0px;
+}
+
+.grimoireList {
+  margin-top: 4%;
+}
+
+.collection {
+  font-size: 30px;
+  margin-top: 4%;
+}
+
+/* MASTER GRIMOIRE */
+#master-grimoire {
+  width: 50%;
+  border-radius: 25px;
+  transition: 0.3s;
+  animation: ease-in;
+}
+
+#master-grimoire:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px 0px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.centered {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(218, 196, 0)
+}
+
+#centeredButt {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.masterTitle {
+  margin-top: 3%;
+  font-size: 25px;
+}
+
+/* OPEN GRIMOIRE/GRIMOIRE DETAILS */
+
+.spellsList {
+  position: absolute;
+  top: 6%;
+  left: 32%;
+}
+
+.spellsListAdd {
+  position: absolute;
+  top: 18%;
+  left: 30.5%;
+}
+
+.grimoireTitle {
+  margin-top: 3%;
+  font-size: 25px;
+}
+
+
+/* SPELLCARDS */
+.spellCards {
+  width: 30%;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  margin: auto;
+  background: rgba(156, 143, 27, 0.555);
+  color: rgb(0, 0, 0);
+}
+
+
+/* SPELLPAGES */
+.paired {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+.pair {
+  width: 28%;
+  overflow: hidden;
+}
+
+.categoryPaired {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.blankBook {
+  margin-top: -4%;
+  margin-bottom: -5%;
+  width: 1750px;
+}
+
+.spellBook {
+  margin-top: 0%;
+  margin-bottom: -5%;
+  width: 1750px;
+}
+
+.blankScroll {
+  width: 1100px;
+}
+
+
+.spellPage {
+  position: relative;
+  color: rgb(0, 0, 0);
+}
+
+.spellChapter{
+  position: absolute;
+  top: 13%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+
+.rightPage {
+  width: 26%;
+  height: 700px;
+  overflow-y: scroll;
+}
+
+.leftPage {
+  width: 26%;
+}
+
+.spellText{
+  width: 80%;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.ritualText {
+  width: 80%;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+.spellButton {
+  display: inline-block;
+  padding: 3em 1.3em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-image: url("https://res.cloudinary.com/djzhu5kfj/image/upload/c_crop,h_280,w_270/v1635357874/Flatiron%20-%20Final%20Project/Spell_button_lonmrf.gif");
+  background-size: cover;
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 15px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.spellAni {
+  width: 300px;
+  border-radius: 40px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner {
+  position: relative;
+  padding: 0px;
+  width: 400px;
+}
+
+.popup-inner .close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+/* CREATE GRIMOIRE */
+
+#mystra {
+  z-index: 1;
+  border-radius: 30px;
+  width: 500px;
+}
+
+label{
+  font-size: 25px;
+}
+
+.inputArea {
+  background-color: rgba(255, 255, 255, 0.61);
+  padding: 10px 40px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  outline: 0;
+  border-width: 0 0 3px;
+  border-color: rgb(136, 154, 168);
+  font-size: 15px;
+}
+
+.inputArea:focus {
+  border-color: springgreen;
+}
+
+.inputArea, select, textarea {
+  color: rgb(43, 226, 104);
+}
+
+textarea:focus, .inputArea:focus {
+  color: blueviolet;
+}
+
+.createButt {
+  display: inline-block;
+  padding: .5em .8em;
+  margin: 0 0.1em 0.1em 0;
+  border: 0.16em solid rgb(45, 102, 167);
+  background-color: rgb(87, 90, 104);
+  border-radius: 2em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300px;
+  font-size: 15px;
+  color: rgb(0, 255, 191);
+  text-shadow: 0 0.04em 0.04em slategray;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+
+@media all and (max-width:30em){
+  .createButt {
+    display:block;
+    margin: 0.2em auto;
+  }
+}
+
+
+
+
+
+
+
+
+/* .searchPaired {
+  width: 175px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchPair {
+  width: 100px;
+  overflow: hidden;
+  margin: auto;
+} */
+
+
+
+/* PAGINATION */
+
+/* .paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid rgb(255, 230, 0);
+  color: rgb(255, 230, 0);
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: rgb(32, 114, 0);
+  background-color: rgb(255, 230, 0);
+}
+
+.paginationActive a {
+  color: rgb(32, 114, 0);
+  background-color: rgb(255, 230, 0);
+} */
